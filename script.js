@@ -12,17 +12,12 @@ const body = document.body; // You can also use document.documentElement to targ
 function toggleDarkMode() {
   if (darkModeToggle.checked) {
     body.classList.add('dark-mode');
+    
   } else {
     body.classList.remove('dark-mode');
   }
 }
 
-// Add an event listener to the toggle switch
-darkModeToggle.addEventListener('change', toggleDarkMode);
-
-// Call toggleDarkMode initially based on user preference (if stored)
-const isDarkModePreferred = localStorage.getItem('darkMode');
-if (isDarkModePreferred === 'true') {
-  darkModeToggle.checked = true;
-  toggleDarkMode();
-}
+document.getElementById('darkModeToggle').addEventListener('change', function(event) {
+  document.body.classList.toggle('dark-mode', event.target.checked);
+});
